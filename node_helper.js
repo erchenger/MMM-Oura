@@ -9,6 +9,9 @@ var NodeHelper = require("node_helper");
 
 module.exports = NodeHelper.create({
 
+	start: () => {
+	},
+
 	// Override socketNotificationReceived method.
 
 	/* socketNotificationReceived(notification, payload)
@@ -18,30 +21,16 @@ module.exports = NodeHelper.create({
 	 * argument payload mixed - The payload of the notification.
 	 */
 	socketNotificationReceived: function(notification, payload) {
-		if (notification === "MagicMirrorModule-Oura-NOTIFICATION_TEST") {
-			console.log("Working notification system. Notification:", notification, "payload: ", payload);
+		if (notification === "GET_SLEEP") {
+			var data = {
+				sleepDuration: "5hr 30m",
+				sleepScore: 40, 
+				readinessScore: 20,
+			}
+			console.log("ERC DATA: ", data);
+			this.sendSocketNotification("SLEEP", data)
 			// Send notification
-			this.sendNotificationTest(this.anotherFunction()); //Is possible send objects :)
+			// this.sendNotificationTest(this.anotherFunction()); //Is possible send objects :)
 		}
 	},
-
-	// Example function send notification test
-	sendNotificationTest: function(payload) {
-		this.sendSocketNotification("MagicMirrorModule-Oura-NOTIFICATION_TEST", payload);
-	},
-
-	// this you can create extra routes for your module
-	extraRoutes: function() {
-		var self = this;
-		this.expressApp.get("/MagicMirrorModule-Oura/extra_route", function(req, res) {
-			// call another function
-			values = self.anotherFunction();
-			res.send(values);
-		});
-	},
-
-	// Test another function
-	anotherFunction: function() {
-		return {date: new Date()};
-	}
 });
