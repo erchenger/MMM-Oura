@@ -11,6 +11,7 @@ Module.register("MagicMirrorModule-Oura", {
 	defaults: {
 		// interval: 3600,
 		interval: 15,
+		apiKey: "",
 	},
 
 	requiresVersion: "2.1.0", // Required version of MagicMirror
@@ -23,9 +24,10 @@ Module.register("MagicMirrorModule-Oura", {
 
 	start: function () {
 		const self = this
+		self.sendSocketNotification("CONFIG", self.config);
 		const seconds = this.config.interval * 1000;
-		self.sendSocketNotification("GET_SLEEP")
 		window.setInterval(function () {
+			self.sendSocketNotification("CONFIG", self.config);
 			self.sendSocketNotification("GET_SLEEP")
 		}, seconds)
 	},
