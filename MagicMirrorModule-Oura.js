@@ -9,8 +9,7 @@
 
 Module.register("MagicMirrorModule-Oura", {
   defaults: {
-    // interval: 3600,
-    interval: 15,
+    interval: 3600,
     apiKey: ""
   },
 
