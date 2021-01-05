@@ -1,12 +1,12 @@
-# MagicMirrorModule-Oura
+# MMM-Oura
 
 This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/). It displays sleep data from your Oura sleep tracker.
 
 ## Installation
 
 1. Go to MagicMirror's `modules`.
-2. Run `git clone https://github.com/erchenger/MagicMirrorModule-Oura`. 
-3. Go into the newly created directory: `cd MagicMirrorModule-Oura`.
+2. Run `git clone https://github.com/erchenger/MMM-Oura`. 
+3. Go into the newly created directory: `cd MMM-Oura`.
 4. Run `npm install` to install the node dependencies.
 
 To use this module, add the following configuration block to the modules array in the `config/config.js` file:
@@ -15,7 +15,7 @@ To use this module, add the following configuration block to the modules array i
 var config = {
   modules: [
     {
-      module: "MagicMirrorModule-Oura",
+      module: "MMM-Oura",
       position: 'top_right', // Or any other region
       config: {
         // See below for configurable options
@@ -27,7 +27,7 @@ var config = {
 
 ## Screenshot
 
-![](MagicMirrorModule-Oura-screenshot.png)
+![](MMM-Oura-screenshot.png)
 ## Configuration options
 
 | Option    | Description                                                                                                     |

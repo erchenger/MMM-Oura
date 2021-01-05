@@ -1,13 +1,13 @@
 /* global Module */
 
 /* Magic Mirror
- * Module: MagicMirrorModule-Oura
+ * Module: MMM-Oura
  *
  * By Elliott Chenger
  * MIT Licensed.
  */
 
-Module.register("MagicMirrorModule-Oura", {
+Module.register("MMM-Oura", {
   defaults: {
     interval: 3600,
     apiKey: ""
@@ -94,7 +94,7 @@ Module.register("MagicMirrorModule-Oura", {
   },
 
   getStyles: function () {
-    return ["MagicMirrorModule-Oura.css"];
+    return ["MMM-Oura.css"];
   },
 
   // Load translations files

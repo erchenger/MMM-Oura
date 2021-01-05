@@ -1,5 +1,5 @@
 /* Magic Mirror
- * Node Helper: MagicMirrorModule-Oura
+ * Node Helper: MMM-Oura
  *
  * By Elliott Chenger
  * MIT Licensed.
