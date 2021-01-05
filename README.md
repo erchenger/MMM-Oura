@@ -25,6 +25,9 @@ var config = {
 };
 ```
 
+## Screenshot
+
+![](MagicMirrorModule-Oura-screenshot.png)
 ## Configuration options
 
 | Option    | Description                                                                                                     |
