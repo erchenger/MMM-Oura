@@ -9,7 +9,7 @@
 
 Module.register("MMM-Oura", {
   defaults: {
-    interval: 3600,
+    interval: 30,
     apiKey: ""
   },
 
