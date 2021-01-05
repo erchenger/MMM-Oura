@@ -46,16 +46,13 @@ module.exports = NodeHelper.create({
 				const minLabel = sleepMinsDuration > 1 ? "mins" : "min";
 				const data = {
 					sleepDuration: `${sleepHrDuration}${hrLabel} ${sleepMinsDuration}${minLabel}`,
-					sleepScore: sleep.sleep[0].score,
-					readinessScore: readiness.readiness[0].score,
+					sleepScore: sleep.sleep[0].score || "?",
+					readinessScore: readiness.readiness[0].score || "?",
 				}
-
 				self.sendSocketNotification("SLEEP", data)
 			}).catch(function (error) {
+				console.log(error);
 			})
-
-			// Send notification
-			// this.sendNotificationTest(this.anotherFunction()); //Is possible send objects :)
 		}
 	},
 });
