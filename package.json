@@ -5,6 +5,10 @@
   "main": "MagicMirrorModule-Oura.js",
   "author": "Elliott Chenger",
   "license": "MIT",
+  "scripts": {
+    "test:prettier": "prettier --check **/*.{js,css,json,md}",
+    "lint:prettier": "prettier --write **/*.{js,css,json,md}"
+  },
   "devDependencies": {
     "grunt": "latest",
     "grunt-eslint": "latest",
@@ -17,6 +21,7 @@
   },
   "dependencies": {
     "dateformat": "^4.4.1",
-    "oura": "^0.6.4"
+    "oura": "^0.6.4",
+    "prettier": "^2.2.1"
   }
 }
