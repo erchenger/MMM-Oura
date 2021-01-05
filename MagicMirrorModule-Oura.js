@@ -9,38 +9,56 @@
 
 Module.register("MagicMirrorModule-Oura", {
 	defaults: {
+		// interval: 3600,
+		interval: 15,
+		apiKey: "",
 	},
 
 	requiresVersion: "2.1.0", // Required version of MagicMirror
+	socketNotificationReceived: function (notification, payload) {
+		if (notification === "SLEEP") {
+			this.sleep = payload;
+			this.updateDom()
+		}
+	},
 
-	getDom: function() {
+	start: function () {
+		const self = this
+		self.sendSocketNotification("CONFIG", self.config);
+		const seconds = this.config.interval * 1000;
+		window.setInterval(function () {
+			self.sendSocketNotification("CONFIG", self.config);
+			self.sendSocketNotification("GET_SLEEP")
+		}, seconds)
+	},
+	getDom: function () {
 		var self = this;
 		//Scores Row
 		var scoresRow = document.createElement("tr")
 		scoresRow.className = "oura-scores"
-		
+
 		//Readiness Score
 		var readinessScoreContainer = document.createElement("th")
-		var readinessScore = document.createTextNode("93")
+		var readinessScore = document.createTextNode(this.sleep.readinessScore || "?")
 		readinessScoreContainer.appendChild(readinessScore)
 		scoresRow.appendChild(readinessScoreContainer)
 
 		// Sleep Score
 		var sleepScoreContainer = document.createElement("th")
-		var sleepScore = document.createTextNode("93")
+		var sleepScore = document.createTextNode(this.sleep.sleepScore || "?")
 		sleepScoreContainer.appendChild(sleepScore)
 		scoresRow.appendChild(sleepScoreContainer)
 
 		// Sleep Duration
 		var sleepDurationContainer = document.createElement("th")
-		var sleepDuration = document.createTextNode("8h 2m")
+		var sleepDuration = document.createTextNode(this.sleep.sleepDuration || "?")
 		sleepDurationContainer.appendChild(sleepDuration)
 		scoresRow.appendChild(sleepDurationContainer)
 
 		//Labels Row
 		var labelsRow = document.createElement("tr")
 		labelsRow.className = "oura-lables"
-		
+
 		//Readiness Label
 		var readinessLabelContainer = document.createElement("th")
 		var readinessLabel = document.createTextNode("Readiness")
@@ -68,7 +86,7 @@ Module.register("MagicMirrorModule-Oura", {
 		return wrapper;
 	},
 
-	getScripts: function() {
+	getScripts: function () {
 		return [];
 	},
 
@@ -79,7 +97,7 @@ Module.register("MagicMirrorModule-Oura", {
 	},
 
 	// Load translations files
-	getTranslations: function() {
+	getTranslations: function () {
 		//FIXME: This can be load a one file javascript definition
 		return {
 			en: "translations/en.json",

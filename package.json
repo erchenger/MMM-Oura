@@ -14,5 +14,9 @@
     "grunt-yamllint": "latest",
     "stylelint-config-standard": "latest",
     "time-grunt": "latest"
+  },
+  "dependencies": {
+    "dateformat": "^4.4.1",
+    "oura": "^0.6.4"
   }
 }
